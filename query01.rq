@@ -1,0 +1,36 @@
+PREFIX up:<http://purl.uniprot.org/core/>
+PREFIX taxon:<http://purl.uniprot.org/taxonomy/>
+PREFIX FLOPO: <http://purl.obolibrary.org/obo/FLOPO_>
+PREFIX RO: <http://purl.obolibrary.org/obo/RO_>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX gbif: <http://www.gbif.org/species/>
+
+
+SELECT ?species_name ?trait ?protein 
+WHERE
+{
+# Subquery 1
+{
+SELECT DISTINCT ?trait ?species_name 
+FROM <http://semantics.senckenberg.de/flopo>
+WHERE
+  {
+  gbif:2762752 rdfs:label ?species_name ;
+  RO:0002200 ?FLOPO_term .
+  ?FLOPO_term rdfs:label ?trait .
+  }}
+# Subquery 2
+{
+SELECT ?organism ?protein
+WHERE
+{
+SERVICE <https://sparql.uniprot.org/SPARQL>
+{
+SELECT ?organism ?protein
+WHERE
+{
+?organism up:scientificName "Musa paradisiaca" .
+?protein a up:Protein ;
+up:organism ?organism .
+}}}}
+}
