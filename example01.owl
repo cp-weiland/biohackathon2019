@@ -1,0 +1,22 @@
+ <!-- http://purl.obolibrary.org/obo/FLOPO_0002102 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/FLOPO_0002102">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO
+_0000051"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/PO_0009001"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
+                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/PATO_0002351"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fruit fleshy</rdfs:label>
+    </owl:Class>
